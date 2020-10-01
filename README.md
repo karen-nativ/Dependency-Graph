@@ -8,25 +8,25 @@ Prerequisites
 ----------------------
 This tool requires the following libraries be installed within the Python
 environment you are running this script in:
-    * networkx
-    * plotly.graph_objects
-    * plotly.offline
-    * datetime
-    * random
-    * shutil
-    * os
+ Markup : * networkx
+          * plotly.graph_objects
+          * plotly.offline
+          * datetime
+          * random
+          * shutil
+          * os
 
 This tool requires the following files in the same folder:
-    * create_graph.py
-    * graph_aux.py
-    * config.py - The variables in this file may be modified and will affect the graph appearance and file
+Markup : * create_graph.py
+         * graph_aux.py
+         * config.py - The variables in this file may be modified and will affect the graph appearance and file
 
 This tool requires Specman to run in the environment, and the following environment variables to be configured:
-    * PYTHONPATH - the path to the python files written above
-    * SPECMAN_PYTHON_INCLUDE_DIR
-    * SPECMAN_PYTHON_LIB_DIR
-    * SPECMAN_PATH
-    (See Specman reference for details regarding these variables)
+Markup : * PYTHONPATH - the path to the python files written above
+         * SPECMAN_PYTHON_INCLUDE_DIR
+         * SPECMAN_PYTHON_LIB_DIR
+         * SPECMAN_PATH
+(See Specman reference for details regarding these variables)
 
 
 ----------------------
