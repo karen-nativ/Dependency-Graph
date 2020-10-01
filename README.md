@@ -1,7 +1,7 @@
 # Dependency-Graph
 Visual display of *e* environment dependencies.
 
-[ More e code examples in https://github.com/efratcdn/spmn-e-utils ]
+[ More *e* code examples in https://github.com/efratcdn/spmn-e-utils ]
 
 ----------------------
 Prerequisites
