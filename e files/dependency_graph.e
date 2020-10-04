@@ -1,5 +1,5 @@
 <'
-import dependency_util.e;
+import e_util_dependency_util.e;
 
 struct vertex {
     %name : string;
@@ -33,7 +33,7 @@ extend dependencies_query {
         var all_modules: list of rf_module = dependencies_query::get_interesting_modules();
         var vertices : list (key: name) of vertex;
         for each (module) in all_modules {
-        	if module.get_name() != "dependency_graph" and module.get_name() != "dependency_util" {
+        	if module.get_name() != "dependency_graph" and module.get_name() != "e_util_dependency_util" {
 	        	var current_vertex : vertex = new with {
 	        		.name = module.get_name();
 	        		.pkg = module.get_package().get_name();
@@ -46,7 +46,7 @@ extend dependencies_query {
         if not dep_from.is_empty() or not dep_to.is_empty() then {
             for each (dep) in dep_from {
             	var module_name: string = dep.the_module.get_name();
-            	if module_name != "dependency_graph" and module_name != "dependency_util" {
+            	if module_name != "dependency_graph" and module_name != "e_util_dependency_util" {
 	            	//Add import edges
 	        		var all_imported : list of rf_module = dep.the_module.get_direct_imports();
 	        		if not all_imported.is_empty() and module_name !~ "*_top" then {
@@ -103,7 +103,7 @@ extend dependencies_query {
             //Dependencies to the given file, recursively
             for each (dep) in dep_to {
                 var dependee_module_name : string = dep.the_module.get_name(); // Will be destination vertex
-                if dependee_module_name != "dependency_graph" and dependee_module_name != "dependency_util" then {
+                if dependee_module_name != "dependency_graph" and dependee_module_name != "e_util_dependency_util" then {
 	                var current_dst_vertex : vertex = vertices.key(dependee_module_name);
 	                if(current_dst_vertex != NULL) {
 		                for each (dependent) in dep.all_deps {
