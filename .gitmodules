@@ -1,0 +1,3 @@
+[submodule "dependency_util"]
+	path = dependency_util
+	url = https://github.com/efratcdn/dependency_util.git
