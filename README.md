@@ -6,8 +6,7 @@ Visual display of *e* environment dependencies.
 ----------------------
 Prerequisites
 ----------------------
-This tool requires the following libraries be installed within the Python
-environment you are running this script:
+This tool requires Python version >= 3.0 and the following libraries/modules be installed within the Python environment:
 * `networkx`
 * `plotly.graph_objects`
 * `plotly.offline`
