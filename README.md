@@ -6,8 +6,7 @@ Visual display of *e* environment dependencies.
 ----------------------
 Prerequisites
 ----------------------
-This tool requires the following libraries be installed within the Python
-environment you are running this script:
+This tool requires Python version >= 3.0 and the following libraries/modules be installed within the Python environment:
 * `networkx`
 * `plotly.graph_objects`
 * `plotly.offline`
@@ -23,9 +22,9 @@ This tool requires the following files in the same folder:
 
 This tool requires Specman to run in the environment, and the following environment variables to be configured:
 * `PYTHONPATH` - the path to the python files written above
-* `SPECMAN_PYTHON_INCLUDE_DIR`
+* `SPECMAN_PATH` - must include a path to the e_util_dependency_util.e file
 * `SPECMAN_PYTHON_LIB_DIR`
-* `SPECMAN_PATH`
+* `SPECMAN_PYTHON_INCLUDE_DIR`
 (See Specman reference for details regarding these variables)
 
 
