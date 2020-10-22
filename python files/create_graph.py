@@ -4,13 +4,15 @@ This tool allows the user to create a visual display of dependencies in their en
 
 It is assumed that this tool is called from the matching E file dependency_graph.e
 
-This tool requires the following libraries be installed within the Python
-environment you are running this script in:
-    * networkx
+This tool requires Python version >= 3.2 and the following libraries be installed:
+    * packaging.version
     * plotly.graph_objects
     * plotly.offline
-    * os
+    * subprocess
+    * platform
+    * networkx
     * datetime
+    * os
 
 This tool requires the following files in the same folder:
     * graph_aux.py
@@ -21,13 +23,16 @@ This file contains the following functions:
     * draw_graph - Creates an html file that displays the graph visually
 """
 
-
-import plotly.graph_objects as go
-import plotly.offline as po
 import graph_aux as aux
 from config import *
-import os
+
 from datetime import datetime as datetime
+from packaging import version
+import plotly.graph_objects as go
+import plotly.offline as po
+import platform
+import os
+
 
 class vertex:
     """ The class that corresponds with the vertex struct in the e file
@@ -54,8 +59,9 @@ class edge:
 ###### CONSTANTS ######
 
 SUPPORTED_TYPES = ["modules", "packages"]
+PYTHON_VERSION = "3.2.0"
 
-############################
+#######################
 
 
 def graph_to_file(vertices, edges, imported, item_name, item_type):
@@ -128,9 +134,14 @@ def draw_graph(vertices, edges, imported, item_name, item_type, blacklist=[]):
     blacklist : list, optional
         A list of entities that can be displayed or hidden (default is an empty list
     """
+    
+    if version.parse(platform.python_version()) < version.parse(PYTHON_VERSION):
+        print("\t*** Error: Python version", PYTHON_VERSION, "is required.")
+        print("\tYour current version is " + platform.python_version())
+        return
 
     if item_type not in SUPPORTED_TYPES:
-        print("The supported item_type parameter values are: ", SUPPORTED_TYPES)
+        print("\t*** Error: The supported item_type parameter values are: ", SUPPORTED_TYPES)
         return
     if len(vertices) == 0:
         print("The module may not be loaded")
@@ -226,8 +237,7 @@ def draw_graph(vertices, edges, imported, item_name, item_type, blacklist=[]):
     fig1=go.Figure(data=full_graph_data+secondary_graph_data, layout=my_layout)
     
     folder_path = os.getcwd() + "/" + HTML_FILE_FOLDER
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
+    os.makedirs(folder_path, exist_ok=True)
     
     graph_filename = po.plot(fig1, filename=folder_path + item_type + "-" + item_name + "-" + datetime.now().strftime("%Y_%m_%d_%H_%M") + '.html', auto_open=False, config={"displayModeBar":False}) # Creates the graph into an interactive HTML file
     aux.display_in_browser("file://" + graph_filename)

@@ -5,11 +5,11 @@ This file is required to be in the same folder as:
     create_graph.py
     config.py
 """
-
-from config import *
-import networkx as nx
-import random
 import plotly.graph_objects as go
+import networkx as nx
+from config import *
+import subprocess
+import random
 import shutil
 import os
 
@@ -213,7 +213,6 @@ def create_layout(axis, Xarrow, Yarrow, Ximport, Yimport, Xsecondary, Ysecondary
                   )
 
 def display_in_browser(file_path):
-    import subprocess
     browsers = os.environ.get("BROWSER")
     if browsers is not None:
         browser_list = browsers.split(os.pathsep)
