@@ -5,9 +5,10 @@ This file is required to be in the same folder as:
     create_graph.py
     config.py
 """
+from config import *
+
 import plotly.graph_objects as go
 import networkx as nx
-from config import *
 import subprocess
 import random
 import shutil

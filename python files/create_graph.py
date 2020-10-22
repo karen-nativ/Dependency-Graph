@@ -132,7 +132,7 @@ def draw_graph(vertices, edges, imported, item_name, item_type, blacklist=[]):
         The entity type of the graph
         Must be one of the const SUPPORTED_TYPES
     blacklist : list, optional
-        A list of entities that can be displayed or hidden (default is an empty list
+        A list of entities that can be displayed or hidden (default is an empty list)
     """
     
     if version.parse(platform.python_version()) < version.parse(PYTHON_VERSION):
