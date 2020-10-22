@@ -4,7 +4,7 @@ This tool allows the user to create a visual display of dependencies in their en
 
 It is assumed that this tool is called from the matching E file dependency_graph.e
 
-This tool requires Python version >= 3.2 and the following libraries be installed:
+This tool requires Python version >= 3.2 and the following modules be installed:
     * packaging.version
     * plotly.graph_objects
     * plotly.offline
@@ -12,6 +12,8 @@ This tool requires Python version >= 3.2 and the following libraries be installe
     * platform
     * networkx
     * datetime
+    * random
+    * shutil
     * os
 
 This tool requires the following files in the same folder:
